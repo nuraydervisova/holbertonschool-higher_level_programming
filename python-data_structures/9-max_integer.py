@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 def max_integer(my_list=[]):
-    if not my_list:  # Eğer liste boş
+    # Əgər siyahı boşdursa, None qaytar
+    if len(my_list) == 0:
         return None
-    max_num = my_list[0]  # Başlangıçta listenin ilk elemanını en büyük olarak kabu
-    for num in my_list:  # Listenin her elemanını kontrol 
-        if num > max_num:
-            max_num = num  # Daha büyük bir sayı bulunduysa, onu yeni en büyük sayı olar
-    return max_num  # En büyük sayıyı d�
+    # Siyahını sətir-sətir nəzərdən keç
+    largest = my_list[0]  # İlk elementi ən böyük ədəd olaraq təyin
+    for num in my_list:
+        if num > largest:
+            largest = num  # Yeni ən böyük ədəd tapıldıqda onu təyi
+    return largest
