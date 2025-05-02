@@ -1,5 +1,9 @@
 #!/usr/bin/python3
-def element_at(my_list, idx):
-    if idx < 0 or idx >= len(my_list):
-        return None
-    return my_list[idx]
+from calculator_1 import add, sub, mul, div
+a = 10
+b = 5
+if __name__ == "__main__":
+    print("{} + {} = {}".format(a, b, add(a, b)))
+    print("{} - {} = {}".format(a, b, sub(a, b)))
+    print("{} * {} = {}".format(a, b, mul(a, b)))
+    print("{} / {} = {}".format(a, b, div(a, b)))
