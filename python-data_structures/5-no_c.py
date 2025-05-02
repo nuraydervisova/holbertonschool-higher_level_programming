@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
 def no_c(my_string):
     result = ""  # Nəticəni saxlayacağımız boş bir 
     for char in my_string:  # Verilən sətirdəki hər bir xarakteri yoxlay
