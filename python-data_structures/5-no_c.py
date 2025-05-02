@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
 def no_c(my_string):
-    result = ""  # Nəticəni saxlayacağımız boş bir 
-    for char in my_string:  # Verilən sətirdəki hər bir xarakteri yoxlay
-        if char != 'c' and char != 'C':  # Əgər xarakter 'c' və ya 'C' deyil
-            result += char  # O zaman onu nəticəyə əlavə ed
-    return result  # Yeni sətiri qaytarır�
+    new_string = ""
+    for char in my_string:
+        if char not in ['c', 'C']:
+            new_string += char
+    return new_string
