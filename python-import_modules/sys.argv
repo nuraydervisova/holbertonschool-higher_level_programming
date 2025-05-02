@@ -1,11 +1,7 @@
 #!/usr/bin/python3
 import sys
 if __name__ == "__main__":
-    # sys.argv[0] proqramın adıdır, buna görə ondan sonra gələnləri saymalıyıq
-    num_args = len(sys.argv) - 1  # arqumentlər sayı (proqramın adını çıxarırıq)
-    if num_args == 0:
-        print("No arguments.")
-    else:
-        print(f"Number of argument{'s' if num_args > 1 else ''}:")
-        for i in range(1, num_args + 1):
-            print(f"{i}: {sys.argv[i]}")
+    total = 0
+    for arg in sys.argv[1:]:  # sys.argv[0] proqramın adı olduğu üçün 1-dən başlamaq lazımdır
+        total += int(arg)  # Hər arqumenti tam ədədə çeviririk və cəminə əlavə edirik
+    print(total)  # Cəmi çap edir
