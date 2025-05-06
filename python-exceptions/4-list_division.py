@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-list_division = __import__('4-list_division').list_division
 def list_division(my_list_1, my_list_2, list_length):
     result = []
     for i in range(list_length):
