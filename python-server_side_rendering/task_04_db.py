@@ -7,7 +7,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    # Əsas səhifədən /products?source=json-ə yönləndirir
     return redirect('/products?source=json')
 
 def get_data_from_json():
@@ -22,11 +21,14 @@ def get_data_from_csv():
             data.append(row)
     return data
 
-def get_data_from_sqlite():
+def get_data_from_sqlite(product_id=None):
     try:
         conn = sqlite3.connect('products.db')
         cursor = conn.cursor()
-        cursor.execute("SELECT * FROM Products")
+        if product_id:
+            cursor.execute("SELECT * FROM Products WHERE id = ?", (product_id,))
+        else:
+            cursor.execute("SELECT * FROM Products")
         rows = cursor.fetchall()
         conn.close()
 
@@ -45,13 +47,20 @@ def get_data_from_sqlite():
 @app.route('/products')
 def products():
     source = request.args.get('source')
+    product_id = request.args.get('id')
+    
+    if product_id:
+        try:
+            product_id = int(product_id)
+        except ValueError:
+            return "Invalid id"
 
     if source == 'json':
         products = get_data_from_json()
     elif source == 'csv':
         products = get_data_from_csv()
     elif source == 'sql':
-        result = get_data_from_sqlite()
+        result = get_data_from_sqlite(product_id)
         if isinstance(result, dict) and "error" in result:
             return f"Database error: {result['error']}"
         products = result
@@ -62,3 +71,4 @@ def products():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
